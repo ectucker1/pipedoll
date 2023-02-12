@@ -18,6 +18,10 @@ bin
 *.exp
 demo/bin/pipedoll/*
 .sconsign*.dblite
+*.dll
+*.so
+*.exe
+*.a
 
 # Godot Imports
 .godot/
@@ -26,3 +30,7 @@ demo/bin/pipedoll/*
 # IDE Files
 .idea/
 .vscode/
+
+# MediaPipe Graphs & Models
+mediapipe_graphs/
+mediapipe_models/

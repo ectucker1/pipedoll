@@ -1,10 +1,11 @@
 extends Node
 
-func _ready() -> void:
-	var s = Summator.new()
-	s.add(10)
-	s.add(20)
-	s.add(30)
-	print(s.get_total())
-	s.reset()
+@onready
+var pipe = MediaPipe.new()
 
+func _ready():
+	pipe.start()
+
+func _process(delta: float) -> void:
+	if (pipe.is_present()):
+		print(pipe.first_landmark())

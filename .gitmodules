@@ -4,3 +4,6 @@
 [submodule "thirdparty/mediapipe_cpp_lib"]
 	path = thirdparty/mediapipe_cpp_lib
 	url = https://github.com/purgeme/mediapipe_cpp_lib.git
+[submodule "thirdparty/protobuf"]
+	path = thirdparty/protobuf
+	url = https://github.com/protocolbuffers/protobuf.git

@@ -1,5 +1,5 @@
 #include "register_types.h"
-#include "summator.h"
+#include "mediapipe.h"
 #include <gdextension_interface.h>
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/defs.hpp>
@@ -7,15 +7,15 @@
 
 using namespace godot;
 
-void initialize_summator_types(ModuleInitializationLevel p_level)
+void initialize_pipedoll_types(ModuleInitializationLevel p_level)
 {
 	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
-	ClassDB::register_class<Summator>();
+	ClassDB::register_class<MediaPipe>();
 }
 
-void uninitialize_summator_types(ModuleInitializationLevel p_level) {
+void uninitialize_pipedoll_types(ModuleInitializationLevel p_level) {
 	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
@@ -30,8 +30,8 @@ extern "C"
 	{
 		GDExtensionBinding::InitObject init_obj(p_interface, p_library, r_initialization);
 
-		init_obj.register_initializer(initialize_summator_types);
-		init_obj.register_terminator(uninitialize_summator_types);
+		init_obj.register_initializer(initialize_pipedoll_types);
+		init_obj.register_terminator(uninitialize_pipedoll_types);
 		init_obj.set_minimum_library_initialization_level(MODULE_INITIALIZATION_LEVEL_SCENE);
 
 		return init_obj.init();
