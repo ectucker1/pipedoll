@@ -1,0 +1,6 @@
+[submodule "thirdparty/godot-cpp"]
+	path = thirdparty/godot-cpp
+	url = https://github.com/godotengine/godot-cpp.git
+[submodule "thirdparty/mediapipe_cpp_lib"]
+	path = thirdparty/mediapipe_cpp_lib
+	url = https://github.com/purgeme/mediapipe_cpp_lib.git

@@ -1,0 +1,28 @@
+# Binaries and Build Output
+*.o
+*.os
+*.so
+*.obj
+*.bc
+*.pyc
+*.dblite
+*.pdb
+*.lib
+bin
+*.config
+*.creator
+*.creator.user
+*.files
+*.includes
+*.idb
+*.exp
+demo/bin/pipedoll/*
+.sconsign*.dblite
+
+# Godot Imports
+.godot/
+.import/
+
+# IDE Files
+.idea/
+.vscode/
