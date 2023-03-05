@@ -25,3 +25,7 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="PipeDoll Demo"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/editor_icon_previewer/plugin.cfg", "res://addons/plugin-godot-refresher/plugin.cfg", "res://addons/pipedoll/plugin.cfg")

@@ -1,0 +1,133 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq3p84pjjy0ga"]
+
+[ext_resource type="Script" path="res://addons/pipedoll/editor/tab_panel.gd" id="1_5uv1j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb4mg"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="PipedollDock" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sections" type="HSplitContainer" parent="."]
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="RecordSection" type="VBoxContainer" parent="Sections"]
+layout_mode = 2
+
+[node name="RecordLabel" type="Label" parent="Sections/RecordSection"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Record"
+
+[node name="RecordPanel" type="PanelContainer" parent="Sections/RecordSection"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eb4mg")
+script = ExtResource("1_5uv1j")
+
+[node name="RecordLayout" type="VBoxContainer" parent="Sections/RecordSection/RecordPanel"]
+layout_mode = 2
+
+[node name="RecordOptions" type="GridContainer" parent="Sections/RecordSection/RecordPanel/RecordLayout"]
+layout_mode = 2
+columns = 2
+
+[node name="CaptureLabel" type="Label" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordOptions"]
+layout_mode = 2
+text = "Capture"
+
+[node name="Capture2DOption" type="CheckBox" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordOptions"]
+layout_mode = 2
+text = "2D Position"
+
+[node name="Skip" type="Control" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordOptions"]
+layout_mode = 2
+
+[node name="Capture3DOption" type="CheckBox" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordOptions"]
+layout_mode = 2
+text = "3D Position"
+
+[node name="OutputLabel" type="Label" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordOptions"]
+layout_mode = 2
+text = "Output Path"
+
+[node name="OutputOption" type="LineEdit" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordOptions"]
+layout_mode = 2
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="RecordControls" type="HBoxContainer" parent="Sections/RecordSection/RecordPanel/RecordLayout"]
+layout_mode = 2
+alignment = 1
+
+[node name="Start" type="Button" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordControls"]
+layout_mode = 2
+text = "Start"
+
+[node name="Pause" type="Button" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordControls"]
+layout_mode = 2
+text = "Pause"
+
+[node name="Stop" type="Button" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordControls"]
+layout_mode = 2
+text = "Stop"
+
+[node name="BakeSection" type="VBoxContainer" parent="Sections"]
+layout_mode = 2
+
+[node name="BakeLabel" type="Label" parent="Sections/BakeSection"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Bake"
+
+[node name="BakePanel" type="PanelContainer" parent="Sections/BakeSection"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eb4mg")
+script = ExtResource("1_5uv1j")
+
+[node name="BakeLayout" type="HBoxContainer" parent="Sections/BakeSection/BakePanel"]
+layout_mode = 2
+
+[node name="BakeOptions" type="GridContainer" parent="Sections/BakeSection/BakePanel/BakeLayout"]
+layout_mode = 2
+columns = 2
+
+[node name="RigLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+text = "Rig"
+
+[node name="RigOption" type="LineEdit" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="AnimPlayerLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+text = "Anim Player"
+
+[node name="AnimPlayerOption" type="LineEdit" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="HeightLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+text = "Height"
+
+[node name="HeightOption" type="SpinBox" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2

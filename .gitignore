@@ -34,3 +34,7 @@ demo/bin/pipedoll/*
 # MediaPipe Graphs & Models
 mediapipe_graphs/
 mediapipe_models/
+
+# Optional Plugins
+editor_icon_previewer/
+plugin-godot-refresher/
