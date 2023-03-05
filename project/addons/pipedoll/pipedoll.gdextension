@@ -1,0 +1,14 @@
+[configuration]
+
+entry_symbol = "pipedoll_library_init"
+
+[libraries]
+
+linux.x86_64.debug = "bin/libpipedoll.linux.template_debug.x86_64.so"
+linux.x86_64.release = "bin/libpipedoll.linux.template_release.x86_64.so"
+linux.debug.arm64 = "bin/libpipedoll.linux.template_debug.arm64.so"
+linux.release.arm64 = "bin/libpipedoll.linux.template_release.arm64.so"
+windows.x86_64.debug = "bin/libpipedoll.windows.template_debug.x86_64.dll"
+windows.x86_64.release = "bin/libpipedoll.windows.template_release.x86_64.dll"
+macos.debug = "bin/libpipedoll.macos.template_debug.framework"
+macos.release = "bin/libpipedoll.macos.template_release.framework"

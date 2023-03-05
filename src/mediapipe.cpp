@@ -1,6 +1,7 @@
 #include "mediapipe.h"
 
 #include <godot_cpp/core/class_db.hpp>
+#include <godot_cpp/classes/project_settings.hpp>
 #include <gmod_api.h>
 #include <framework/formats/landmark.pb.h>
 
@@ -31,7 +32,9 @@ void MediaPipe::start()
         this->_first_landmark = { data->landmark(0).x(), data->landmark(0).y(), data->landmark(0).z() };
     });
 
-    _igmod->start("C:/Users/Ethan Tucker/Documents/College/Honors Project/pipedoll/thirdparty/mediapipe_cpp_lib/mediapipe_graphs/holistic_tracking/holistic_tracking_cpu.pbtxt");
+    String path = ProjectSettings::get_singleton()->globalize_path("res://mediapipe_graphs/holistic_tracking/holistic_tracking_cpu.pbtxt");
+    CharString asciiPath = path.ascii();
+    _igmod->start(asciiPath.get_data());
 }
 
 void MediaPipe::stop()

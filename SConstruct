@@ -28,14 +28,14 @@ if env["platform"] == "windows":
 # Shared library target
 if env["platform"] == "macos":
     library = env.SharedLibrary(
-        "demo/bin/pipedoll/libpipedoll.{}.{}.framework/libpipedoll.{}.{}".format(
+        "project/addons/pipedoll/libpipedoll.{}.{}.framework/libpipedoll.{}.{}".format(
             env["platform"], env["target"], env["platform"], env["target"]
         ),
         source=sources,
     )
 else:
     library = env.SharedLibrary(
-        "demo/bin/pipedoll/libpipedoll{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+        "project/addons/pipedoll/bin/libpipedoll{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
 
