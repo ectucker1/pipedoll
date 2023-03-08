@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq3p84pjjy0ga"]
+[gd_scene load_steps=4 format=3 uid="uid://dq3p84pjjy0ga"]
 
 [ext_resource type="Script" path="res://addons/pipedoll/editor/tab_panel.gd" id="1_5uv1j"]
+[ext_resource type="Script" path="res://addons/pipedoll/editor/recording_section.gd" id="1_xqsid"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb4mg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvtye"]
 content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
@@ -29,6 +30,7 @@ dragger_visibility = 1
 
 [node name="RecordSection" type="VBoxContainer" parent="Sections"]
 layout_mode = 2
+script = ExtResource("1_xqsid")
 
 [node name="RecordLabel" type="Label" parent="Sections/RecordSection"]
 layout_mode = 2
@@ -37,7 +39,7 @@ text = "Record"
 
 [node name="RecordPanel" type="PanelContainer" parent="Sections/RecordSection"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_eb4mg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_nvtye")
 script = ExtResource("1_5uv1j")
 
 [node name="RecordLayout" type="VBoxContainer" parent="Sections/RecordSection/RecordPanel"]
@@ -68,6 +70,7 @@ text = "Output Path"
 
 [node name="OutputOption" type="LineEdit" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordOptions"]
 layout_mode = 2
+text = "recording.res"
 caret_blink = true
 caret_blink_interval = 0.5
 
@@ -75,16 +78,23 @@ caret_blink_interval = 0.5
 layout_mode = 2
 alignment = 1
 
+[node name="Arm" type="Button" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordControls"]
+layout_mode = 2
+text = "Arm"
+
 [node name="Start" type="Button" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordControls"]
 layout_mode = 2
+disabled = true
 text = "Start"
 
 [node name="Pause" type="Button" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordControls"]
 layout_mode = 2
+disabled = true
 text = "Pause"
 
 [node name="Stop" type="Button" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordControls"]
 layout_mode = 2
+disabled = true
 text = "Stop"
 
 [node name="BakeSection" type="VBoxContainer" parent="Sections"]
@@ -97,7 +107,7 @@ text = "Bake"
 
 [node name="BakePanel" type="PanelContainer" parent="Sections/BakeSection"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_eb4mg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_nvtye")
 script = ExtResource("1_5uv1j")
 
 [node name="BakeLayout" type="HBoxContainer" parent="Sections/BakeSection/BakePanel"]

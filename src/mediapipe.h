@@ -1,25 +1,29 @@
 #ifndef MEDIAPIPE_CLASS_H
 #define MEDIAPIPE_CLASS_H
 
-#ifdef WIN32
-#include <windows.h>
-#endif
+#include <atomic>
 
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/mutex.hpp>
 
 using namespace godot;
 
 class IGMOD;
+class PoseRecording;
 
 class MediaPipe : public RefCounted
 {
     GDCLASS(MediaPipe, RefCounted);
 
-
+private:
     IGMOD* _igmod = nullptr;
 
-    bool _present = false;
-    Vector3 _first_landmark = { 0, 0, 0 };
+    std::atomic_bool _is_present;
+
+    std::atomic_bool _is_recording;
+
+    Mutex _recording_lock;
+    Ref<PoseRecording> _recording;
 
 protected:
     static void _bind_methods();
@@ -28,11 +32,13 @@ public:
     MediaPipe();
     ~MediaPipe();
 
-    void start();
-    void stop();
+    void load();
+
+    void start_record();
+    Ref<PoseRecording> finish_record();
 
     bool is_present();
-    Vector3 first_landmark();
+    bool is_recording();
 };
 
 #endif // MEDIAPIPE_CLASS_H
