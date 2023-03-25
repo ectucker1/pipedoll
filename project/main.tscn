@@ -1,62 +1,77 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgm4ah3j8jxke"]
+[gd_scene load_steps=2 format=3 uid="uid://dgm4ah3j8jxke"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ptcg0"]
-
-[sub_resource type="Animation" id="Animation_uulcd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton/Landmark1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ymko4"]
-resource_name = "new_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton/Landmark1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xqpop"]
-_data = {
-"RESET": SubResource("Animation_uulcd"),
-"new_animation": SubResource("Animation_ymko4")
-}
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ptcg0")
 
 [node name="Skeleton" type="Skeleton2D" parent="."]
 
-[node name="Landmark1" type="Marker2D" parent="Skeleton"]
+[node name="nose" type="Marker2D" parent="Skeleton"]
 
-[node name="Landmark2" type="Marker2D" parent="Skeleton"]
+[node name="left_eye_inner" type="Marker2D" parent="Skeleton"]
 
-[node name="Landmark3" type="Marker2D" parent="Skeleton"]
+[node name="left_eye" type="Marker2D" parent="Skeleton"]
 
-[node name="Landmark4" type="Marker2D" parent="Skeleton"]
+[node name="left_eye_outer" type="Marker2D" parent="Skeleton"]
 
-[node name="Landmark5" type="Marker2D" parent="Skeleton"]
+[node name="right_eye_inner" type="Marker2D" parent="Skeleton"]
+
+[node name="right_eye" type="Marker2D" parent="Skeleton"]
+
+[node name="right_eye_outer" type="Marker2D" parent="Skeleton"]
+
+[node name="left_ear" type="Marker2D" parent="Skeleton"]
+
+[node name="right_ear" type="Marker2D" parent="Skeleton"]
+
+[node name="mouth_left" type="Marker2D" parent="Skeleton"]
+
+[node name="mouth_right" type="Marker2D" parent="Skeleton"]
+
+[node name="left_shoulder" type="Marker2D" parent="Skeleton"]
+
+[node name="right_shoulder" type="Marker2D" parent="Skeleton"]
+
+[node name="left_elbow" type="Marker2D" parent="Skeleton"]
+
+[node name="right_elbow" type="Marker2D" parent="Skeleton"]
+
+[node name="left_wrist" type="Marker2D" parent="Skeleton"]
+
+[node name="right_wrist" type="Marker2D" parent="Skeleton"]
+
+[node name="left_pinky" type="Marker2D" parent="Skeleton"]
+
+[node name="right_pinky" type="Marker2D" parent="Skeleton"]
+
+[node name="left_index" type="Marker2D" parent="Skeleton"]
+
+[node name="left_thumb" type="Marker2D" parent="Skeleton"]
+
+[node name="right_thumb" type="Marker2D" parent="Skeleton"]
+
+[node name="left_hip" type="Marker2D" parent="Skeleton"]
+
+[node name="right_hip" type="Marker2D" parent="Skeleton"]
+
+[node name="left_knee" type="Marker2D" parent="Skeleton"]
+
+[node name="right_knee" type="Marker2D" parent="Skeleton"]
+
+[node name="left_ankle" type="Marker2D" parent="Skeleton"]
+
+[node name="right_ankle" type="Marker2D" parent="Skeleton"]
+
+[node name="left_heel" type="Marker2D" parent="Skeleton"]
+
+[node name="right_heel" type="Marker2D" parent="Skeleton"]
+
+[node name="left_foot_index" type="Marker2D" parent="Skeleton"]
+
+[node name="right_foot_index" type="Marker2D" parent="Skeleton"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_xqpop")
-}
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
