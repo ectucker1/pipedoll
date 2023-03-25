@@ -38,12 +38,17 @@ void MediaPipe::load()
         {
             MutexLock lock(_recording_lock);
 
-            this->_recording->add_snapshot(
-                data->landmark(0).x(),
-                data->landmark(0).y(),
-                data->landmark(0).z(),
-                data->landmark(0).visibility()
-            );
+            PoseLandmark2D landmarks[33];
+            for (size_t i = 0; i < 33; ++i)
+            {
+                landmarks[i] = PoseLandmark2D(
+                    data->landmark(i).x(),
+                    data->landmark(i).y(),
+                    data->landmark(i).z(),
+                    data->landmark(i).visibility());
+            }
+
+            this->_recording->add_snapshot(this->_recording->count_snapshots() / 30.0f, landmarks);
         }
     });
 
@@ -54,6 +59,8 @@ void MediaPipe::load()
 
 void MediaPipe::start_record()
 {
+    MutexLock lock(_recording_lock);
+    
     _is_recording.store(true);
 }
 

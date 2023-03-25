@@ -3,38 +3,33 @@
 PackedFloat32Array PoseRecording::get_data() const
 {
     PackedFloat32Array data = PackedFloat32Array();
-    data.resize(_snapshots.size());
     for (size_t i = 0; i < _snapshots.size(); ++i)
     {
-        const PoseLandmark2D& landmark = _snapshots[i];
-        data.set(i * 4 + 0, landmark.position.x);
-        data.set(i * 4 + 1, landmark.position.y);
-        data.set(i * 4 + 2, landmark.depth);
-        data.set(i * 4 + 3, landmark.visibility);
+        _snapshots[i].append_to(data);
     }
     return data;
 }
 
 void PoseRecording::set_data(const PackedFloat32Array& data)
 {
+    size_t count = data.size() / (1 + (33 * 4));
     _snapshots.clear();
-
-    size_t count = data.size() / 4;
-    _snapshots.resize(count);
     for (size_t i = 0; i < count; ++i)
     {
-        PoseLandmark2D landmark;
-        landmark.position.x = data[i * 4 + 0];
-        landmark.position.y = data[i * 4 + 1];
-        landmark.depth = data[i * 4 + 2];
-        landmark.visibility = data[i * 4 + 3];
-        _snapshots.set(i, landmark);
+        PoseSnapshot2D snapshot;
+        snapshot.read_from(data, i * (1 + (33 * 4)));
+        _snapshots.append(std::move(snapshot));
     }
 }
 
-void PoseRecording::add_snapshot(float x, float y, float depth, float visibility)
+void PoseRecording::add_snapshot(real_t timestep, const PoseLandmark2D (& landmarks)[33])
 {
-    _snapshots.push_back(PoseLandmark2D(x, y, depth, visibility));
+    _snapshots.push_back(PoseSnapshot2D(timestep, landmarks));
+}
+
+size_t PoseRecording::count_snapshots() const
+{
+    return _snapshots.size();
 }
 
 void PoseRecording::_bind_methods()

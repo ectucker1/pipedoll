@@ -1,7 +1,7 @@
 #ifndef POSE_RECORDING_H
 #define POSE_RECORDING_H
 
-#include "pose_landmark.h"
+#include "pose_snapshot.h"
 
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/templates/vector.hpp>
@@ -13,7 +13,7 @@ class PoseRecording : public Resource
 GDCLASS(PoseRecording, Resource);
 
 private:
-    Vector<PoseLandmark2D> _snapshots;
+    Vector<PoseSnapshot2D> _snapshots;
 
 protected:
     static void _bind_methods();
@@ -22,7 +22,8 @@ public:
     PackedFloat32Array get_data() const;
     void set_data(const PackedFloat32Array& data);
 
-    void add_snapshot(float x, float y, float depth, float visibility);
+    void add_snapshot(real_t timestep, const PoseLandmark2D (& landmarks)[33]);
+    size_t count_snapshots() const;
 };
 
 #endif // POSE_RECORDING_H

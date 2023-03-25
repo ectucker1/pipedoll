@@ -23,6 +23,7 @@ private:
     std::atomic_bool _is_recording;
 
     Mutex _recording_lock;
+
     Ref<PoseRecording> _recording;
 
 protected:
