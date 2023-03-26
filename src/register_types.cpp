@@ -2,6 +2,7 @@
 
 #include "pose_recording.h"
 #include "mediapipe.h"
+#include "pose_baker.h"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/class_db.hpp>
@@ -16,6 +17,7 @@ void initialize_pipedoll_types(ModuleInitializationLevel p_level)
 		return;
 	}
 	ClassDB::register_class<PoseRecording>();
+	ClassDB::register_class<PoseBaker>();
 	ClassDB::register_class<MediaPipe>();
 }
 

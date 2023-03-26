@@ -11,7 +11,7 @@ struct PoseSnapshot2D : public Float32Serialize, public Float32Deserialize
 
 public:
     PoseSnapshot2D() {};
-    PoseSnapshot2D(real_t timestep, const PoseLandmark2D (& marks)[33]) : time(time)
+    PoseSnapshot2D(real_t time, const PoseLandmark2D (& marks)[33]) : time(time)
     {
         for (size_t i = 0; i < std::extent<decltype(landmarks)>::value; ++i)
         {

@@ -55,6 +55,7 @@ func create_pose_rig() -> void:
 		add_pose2d_node(rig, "left_pinky")
 		add_pose2d_node(rig, "right_pinky")
 		add_pose2d_node(rig, "left_index")
+		add_pose2d_node(rig, "right_index")
 		add_pose2d_node(rig, "left_thumb")
 		add_pose2d_node(rig, "right_thumb")
 		add_pose2d_node(rig, "left_hip")

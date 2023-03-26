@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq3p84pjjy0ga"]
+[gd_scene load_steps=5 format=3 uid="uid://dq3p84pjjy0ga"]
 
 [ext_resource type="Script" path="res://addons/pipedoll/editor/tab_panel.gd" id="1_5uv1j"]
 [ext_resource type="Script" path="res://addons/pipedoll/editor/recording_section.gd" id="1_xqsid"]
+[ext_resource type="Script" path="res://addons/pipedoll/editor/bake_section.gd" id="3_s4yyt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvtye"]
 content_margin_left = 0.0
@@ -99,6 +100,7 @@ text = "Stop"
 
 [node name="BakeSection" type="VBoxContainer" parent="Sections"]
 layout_mode = 2
+script = ExtResource("3_s4yyt")
 
 [node name="BakeLabel" type="Label" parent="Sections/BakeSection"]
 layout_mode = 2
@@ -110,12 +112,22 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nvtye")
 script = ExtResource("1_5uv1j")
 
-[node name="BakeLayout" type="HBoxContainer" parent="Sections/BakeSection/BakePanel"]
+[node name="BakeLayout" type="VBoxContainer" parent="Sections/BakeSection/BakePanel"]
 layout_mode = 2
 
 [node name="BakeOptions" type="GridContainer" parent="Sections/BakeSection/BakePanel/BakeLayout"]
 layout_mode = 2
 columns = 2
+
+[node name="InputLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+text = "Input Path"
+
+[node name="InputOption" type="LineEdit" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+text = "recording.res"
+caret_blink = true
+caret_blink_interval = 0.5
 
 [node name="RigLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
 layout_mode = 2
@@ -123,6 +135,7 @@ text = "Rig"
 
 [node name="RigOption" type="LineEdit" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
 layout_mode = 2
+text = "Skeleton"
 caret_blink = true
 caret_blink_interval = 0.5
 
@@ -132,6 +145,7 @@ text = "Anim Player"
 
 [node name="AnimPlayerOption" type="LineEdit" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
 layout_mode = 2
+text = "AnimationPlayer"
 caret_blink = true
 caret_blink_interval = 0.5
 
@@ -141,3 +155,13 @@ text = "Height"
 
 [node name="HeightOption" type="SpinBox" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
 layout_mode = 2
+max_value = 5000.0
+step = 5.0
+value = 100.0
+
+[node name="BakeControls" type="HBoxContainer" parent="Sections/BakeSection/BakePanel/BakeLayout"]
+layout_mode = 2
+
+[node name="Bake" type="Button" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeControls"]
+layout_mode = 2
+text = "Bake"

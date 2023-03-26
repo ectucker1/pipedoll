@@ -22,7 +22,7 @@ void PoseSnapshot2D::read_from(const PackedFloat32Array& data, size_t offset)
     offset += 1;
     for (size_t i = 0; i < std::extent<decltype(landmarks)>::value; ++i)
     {
-        landmarks[i].read_from(data, i);
+        landmarks[i].read_from(data, offset);
         offset += 4;
     }
 }
