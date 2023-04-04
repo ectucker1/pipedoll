@@ -4,12 +4,15 @@ extends EditorPlugin
 
 var dock: Control
 var dock_button: Button
+var landmark_editor: EditorInspectorPlugin
 
 
 func _enter_tree() -> void:
 	dock = preload("res://addons/pipedoll/editor/dock.tscn").instantiate()
 	dock_button = add_control_to_bottom_panel(dock, "Motion Capture")
 	add_tool_menu_item("Create Pose Rig", Callable(self, "create_pose_rig"))
+	landmark_editor = preload("res://addons/pipedoll/editor/bone_inspector_editor.gd").new()
+	add_inspector_plugin(landmark_editor)
 
 
 func _exit_tree() -> void:
@@ -18,6 +21,7 @@ func _exit_tree() -> void:
 		dock.queue_free()
 	dock_button = null
 	remove_tool_menu_item("Create Pose Rig")
+	remove_inspector_plugin(landmark_editor)
 
 
 func _get_plugin_name() -> String:

@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://b84uuc3ihuer4"]
+
+[ext_resource type="Script" path="res://addons/pipedoll/editor/landmark_element.gd" id="1_q0i8h"]
+
+[node name="LandmarkElement" type="HBoxContainer"]
+script = ExtResource("1_q0i8h")
+
+[node name="LandmarkOption" type="OptionButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 33
+selected = 0
+popup/item_0/text = "0 - Nose"
+popup/item_0/id = 0
+popup/item_1/text = "1 - Left Eye Inner"
+popup/item_1/id = 1
+popup/item_2/text = "2 - Left Eye"
+popup/item_2/id = 2
+popup/item_3/text = "3 - Left Eye Outer"
+popup/item_3/id = 3
+popup/item_4/text = "4 - Right Eye Inner"
+popup/item_4/id = 4
+popup/item_5/text = "5 - Right Eye"
+popup/item_5/id = 5
+popup/item_6/text = "6 - Right Eye Outer"
+popup/item_6/id = 6
+popup/item_7/text = "7 - Left Ear"
+popup/item_7/id = 7
+popup/item_8/text = "8 - Right Ear"
+popup/item_8/id = 8
+popup/item_9/text = "9 - Mouth Left"
+popup/item_9/id = 9
+popup/item_10/text = "10 - Mouth Right"
+popup/item_10/id = 10
+popup/item_11/text = "11 - Left Shoulder"
+popup/item_11/id = 11
+popup/item_12/text = "12 - Right Shoulder"
+popup/item_12/id = 12
+popup/item_13/text = "13 - Left Elbow"
+popup/item_13/id = 13
+popup/item_14/text = "14 - Right Elbow"
+popup/item_14/id = 14
+popup/item_15/text = "15 - Left Wrist"
+popup/item_15/id = 15
+popup/item_16/text = "16 - Right Wrist"
+popup/item_16/id = 16
+popup/item_17/text = "17 - Left Pinky"
+popup/item_17/id = 17
+popup/item_18/text = "18 - Right Pinky"
+popup/item_18/id = 18
+popup/item_19/text = "19 - Left Index"
+popup/item_19/id = 19
+popup/item_20/text = "20 - Right Index"
+popup/item_20/id = 20
+popup/item_21/text = "21 - Left Thumb"
+popup/item_21/id = 21
+popup/item_22/text = "22 - Right Thumb"
+popup/item_22/id = 22
+popup/item_23/text = "23 - Left Hip"
+popup/item_23/id = 23
+popup/item_24/text = "24 - Right Hip"
+popup/item_24/id = 24
+popup/item_25/text = "25 - Left Knee"
+popup/item_25/id = 25
+popup/item_26/text = "26 - Right Knee"
+popup/item_26/id = 26
+popup/item_27/text = "27 - Left Ankle"
+popup/item_27/id = 27
+popup/item_28/text = "28 - Right Ankle"
+popup/item_28/id = 28
+popup/item_29/text = "29 - Left Heel"
+popup/item_29/id = 29
+popup/item_30/text = "30 - Right Heel"
+popup/item_30/id = 30
+popup/item_31/text = "31 - Left Foot Index"
+popup/item_31/id = 31
+popup/item_32/text = "32 - Right Foot Index"
+popup/item_32/id = 32
+
+[node name="RemoveButton" type="Button" parent="."]
+layout_mode = 2
+text = "-"

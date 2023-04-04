@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7tymqywqkb4w"]
+
+[ext_resource type="Script" path="res://addons/pipedoll/editor/landmark_group_picker.gd" id="1_4v1uv"]
+
+[node name="LandmarkGroupPicker" type="GridContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+columns = 2
+script = ExtResource("1_4v1uv")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Landmark"
+
+[node name="RightLayout" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LandmarkList" type="VBoxContainer" parent="RightLayout"]
+layout_mode = 2
+
+[node name="AddButton" type="Button" parent="RightLayout"]
+layout_mode = 2
+text = "+"

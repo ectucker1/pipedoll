@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ced1tu4nngid7"]
+
+[ext_resource type="Script" path="res://addons/pipedoll/editor/bone_landmark_editor.gd" id="1_67ufk"]
+[ext_resource type="PackedScene" uid="uid://b7tymqywqkb4w" path="res://addons/pipedoll/editor/landmark_group_picker.tscn" id="1_l7pad"]
+
+[node name="BoneLandmarkEditor" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_67ufk")
+
+[node name="StartPicker" parent="." instance=ExtResource("1_l7pad")]
+layout_mode = 2
+prop_name = "Start Landmark"
+
+[node name="TargetPicker" parent="." instance=ExtResource("1_l7pad")]
+layout_mode = 2
+prop_name = "Target Landmark"
