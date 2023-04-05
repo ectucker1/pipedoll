@@ -2,6 +2,7 @@
 
 #include "pose_recording.h"
 #include "mediapipe.h"
+#include "pose_rig.h"
 #include "pose_baker.h"
 
 #include <gdextension_interface.h>
@@ -17,6 +18,7 @@ void initialize_pipedoll_types(ModuleInitializationLevel p_level)
 		return;
 	}
 	ClassDB::register_class<PoseRecording>();
+	ClassDB::register_class<PoseRig>();
 	ClassDB::register_class<PoseBaker>();
 	ClassDB::register_class<MediaPipe>();
 }

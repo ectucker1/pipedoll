@@ -27,15 +27,13 @@ func _bake_pressed() -> void:
 		print("Recording not valid")
 		return
 	
-	var rig = get_tree().get_edited_scene_root().get_node(rig_line.text)
-	if rig == null:
+	var rig_node = get_tree().get_edited_scene_root().get_node(rig_line.text)
+	if rig_node == null:
 		print("Rig not found")
 		return
-	if rig.get_child_count() < 33:
-		print("Rig too small")
-		return
 	
-	print(rig.get_child_count())
+	var rig = PoseRig.new()
+	rig.load_rig(rig_node)
 	
 	var anim: AnimationPlayer = get_tree().get_edited_scene_root().get_node(anim_line.text)
 	if anim == null or not anim is AnimationPlayer:

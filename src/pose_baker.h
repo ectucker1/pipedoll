@@ -8,6 +8,7 @@ namespace godot {
     class AnimationPlayer;
 }
 class PoseRecording;
+class PoseRig;
 
 class PoseBaker : public godot::Resource
 {
@@ -19,7 +20,7 @@ protected:
 public:
     static void bake(
         PoseRecording* poseRecording,
-        godot::Node* rig,
+        PoseRig* rig,
         godot::AnimationPlayer* animPlayer,
         godot::String name,
         real_t height);
