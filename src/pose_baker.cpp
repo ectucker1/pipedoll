@@ -14,8 +14,7 @@ void PoseBaker::bake(
     PoseRecording* poseRecording,
     PoseRig* rig,
     AnimationPlayer* animPlayer,
-    String name,
-    real_t height)
+    String name)
 {
     Ref<AnimationLibrary> recordings;
     if (animPlayer->has_animation_library("Recordings"))
@@ -34,12 +33,21 @@ void PoseBaker::bake(
     recordings->add_animation(name, anim);
 
     // Create the tracks
-    godot::Vector<int32_t> tracks;
+    godot::Vector<int32_t> rot_tracks;
+    godot::Vector<int32_t> pos_tracks;
     for (const PoseBone& bone : rig->get_bones())
     {
-        int32_t track = anim->add_track(Animation::TrackType::TYPE_VALUE);
-        tracks.push_back(track);
-        anim->track_set_path(track, NodePath(godot::String(bone.bone->get_path()) + ":rotation"));
+        int32_t rot_track = anim->add_track(Animation::TrackType::TYPE_VALUE);
+        anim->track_set_path(rot_track, NodePath(godot::String(bone.bone->get_path()) + ":rotation"));
+        rot_tracks.push_back(rot_track);
+
+        int32_t pos_track = 0;
+        if (bone.root)
+        {
+            pos_track = anim->add_track(Animation::TrackType::TYPE_VALUE);
+            anim->track_set_path(pos_track, NodePath(godot::String(bone.bone->get_path()) + ":position"));
+        }
+        pos_tracks.push_back(pos_track);
     }
 
     for (size_t i = 0; i < poseRecording->count_snapshots(); ++i)
@@ -48,9 +56,16 @@ void PoseBaker::bake(
         if (time < 0)
             continue;
         rig->apply_from(poseRecording, i);
-        for (size_t j = 0; j < tracks.size(); ++j)
+        for (size_t j = 0; j < rot_tracks.size(); ++j)
         {
-            anim->track_insert_key(tracks[j], time, rig->get_bones()[j].bone->get_rotation());
+            anim->track_insert_key(rot_tracks[j], time, rig->get_bones()[j].bone->get_rotation());
+        }
+        for (size_t j = 0; j < pos_tracks.size(); ++j)
+        {
+            if (rig->get_bones()[j].root)
+            {
+                anim->track_insert_key(pos_tracks[j], time, rig->get_bones()[j].bone->get_position());
+            }
         }
     }
     anim->set_length(poseRecording->get_time(poseRecording->count_snapshots() - 1));

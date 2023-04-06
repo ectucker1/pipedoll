@@ -26,42 +26,40 @@ static Vector<uint8_t> get_landmarks(const Node* node, const StringName& meta)
     return landmarks;
 } 
 
-void PoseRig::load_rig(Node* root)
+void PoseRig::load_rig(Node* node, Vector2 root_scale)
 {
-    Bone2D* bone = Object::cast_to<Bone2D>(root);
+    _root_scale = root_scale;
+    load_rig_recur(node, true);
+}
+
+void PoseRig::load_rig_recur(Node* node, bool root)
+{
+    Bone2D* bone = Object::cast_to<Bone2D>(node);
     if (bone != nullptr)
     {
         auto start_landmarks = get_landmarks(bone, start_meta);
         auto target_landmarks = get_landmarks(bone, target_meta);
         if (start_landmarks.size() > 0 && target_landmarks.size() > 0)
         {
-            _bones.append(PoseBone(bone, start_landmarks, target_landmarks));
+            _bones.append(PoseBone(bone, start_landmarks, target_landmarks, root));
         }
+        root = false;
     }
-    for (size_t i = 0; i < root->get_child_count(); ++i)
+    for (size_t i = 0; i < node->get_child_count(); ++i)
     {
-        load_rig(root->get_child(i));
+        load_rig_recur(node->get_child(i), root);
     }
 }
 
-double calc_global_angle(const PoseRecording* recording, size_t snapshot, const godot::Vector<uint8_t>& start_landmarks, const godot::Vector<uint8_t>& target_landmarks)
+static Vector2 calc_landmark_pos(const PoseRecording* recording, size_t snapshot, const godot::Vector<uint8_t>& landmarks)
 {
-    Vector2 start;
-    for (uint8_t landmark : start_landmarks)
+    Vector2 pos;
+    for (uint8_t landmark : landmarks)
     {
-        start += recording->get_position(snapshot, landmark);
+        pos += recording->get_position(snapshot, landmark);
     }
-    start /= start_landmarks.size();
-
-    Vector2 target;
-    for (uint8_t landmark : target_landmarks)
-    {
-        target += recording->get_position(snapshot, landmark);
-    }
-    target /= target_landmarks.size();
-
-    Vector2 diff = target - start;
-    return atan2(diff.y, diff.x);
+    pos /= landmarks.size();
+    return pos;
 }
 
 void PoseRig::apply_from(const PoseRecording* recording, size_t snapshot) const
@@ -73,8 +71,16 @@ void PoseRig::apply_from(const PoseRecording* recording, size_t snapshot) const
 
     for (const PoseBone& bone : _bones)
     {
-        double target_angle = calc_global_angle(recording, snapshot, bone.start_landmarks, bone.target_landmarks);
+        Vector2 start = calc_landmark_pos(recording, snapshot, bone.start_landmarks);
+        Vector2 target = calc_landmark_pos(recording, snapshot, bone.target_landmarks);
+
+        Vector2 diff = target - start;
+        double target_angle = atan2(diff.y, diff.x);
+
         bone.bone->set_global_rotation(target_angle - bone.bone->get_bone_angle());
+
+        if (bone.root)
+            bone.bone->set_global_position(target * _root_scale);
     }
 }
 

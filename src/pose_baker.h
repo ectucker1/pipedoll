@@ -22,8 +22,7 @@ public:
         PoseRecording* poseRecording,
         PoseRig* rig,
         godot::AnimationPlayer* animPlayer,
-        godot::String name,
-        real_t height);
+        godot::String name);
 };
 
 #endif // POSE_RECORDING_H

@@ -15,7 +15,10 @@ var rig_line: LineEdit = find_child("RigOption")
 var anim_line: LineEdit = find_child("AnimPlayerOption")
 
 @onready
-var height_spinbox: SpinBox = find_child("HeightOption")
+var scale_x_spinbox: SpinBox = find_child("ScaleXOption")
+
+@onready
+var scale_y_spinbox: SpinBox = find_child("ScaleYOption")
 
 
 func _ready() -> void:
@@ -33,7 +36,7 @@ func _bake_pressed() -> void:
 		return
 	
 	var rig = PoseRig.new()
-	rig.load_rig(rig_node)
+	rig.load_rig(rig_node, Vector2(scale_x_spinbox.value, scale_y_spinbox.value))
 	
 	var anim: AnimationPlayer = get_tree().get_edited_scene_root().get_node(anim_line.text)
 	if anim == null or not anim is AnimationPlayer:
@@ -48,7 +51,5 @@ func _bake_pressed() -> void:
 		if not anim.has_animation(anim_name):
 			i = 0
 	
-	var height = height_spinbox.value
-	
-	PoseBaker.bake(recording, rig, anim, anim_name, height)
+	PoseBaker.bake(recording, rig, anim, anim_name)
 	

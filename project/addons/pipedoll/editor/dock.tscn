@@ -149,11 +149,21 @@ text = "AnimationPlayer"
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="HeightLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+[node name="ScaleXLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
 layout_mode = 2
-text = "Height"
+text = "Root Scale X"
 
-[node name="HeightOption" type="SpinBox" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+[node name="ScaleXOption" type="SpinBox" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+max_value = 5000.0
+step = 5.0
+value = 100.0
+
+[node name="ScaleYLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+text = "Root Scale Y"
+
+[node name="ScaleYOption" type="SpinBox" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
 layout_mode = 2
 max_value = 5000.0
 step = 5.0
