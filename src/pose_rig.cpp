@@ -20,7 +20,7 @@ static Vector<uint8_t> get_landmarks(const Node* node, const StringName& meta)
     for (const auto& mark : marks)
     {
         int64_t index = mark.to_int();
-        if (index > 0 && index < 33)
+        if (index >= 0 && index < 33)
             landmarks.append(index);
     }
     return landmarks;
@@ -74,13 +74,14 @@ void PoseRig::apply_from(const PoseRecording* recording, size_t snapshot) const
         Vector2 start = calc_landmark_pos(recording, snapshot, bone.start_landmarks);
         Vector2 target = calc_landmark_pos(recording, snapshot, bone.target_landmarks);
 
+        if (bone.root)
+        {
+            bone.bone->set_global_position(start * _root_scale);
+        }
+
         Vector2 diff = target - start;
         double target_angle = atan2(diff.y, diff.x);
-
         bone.bone->set_global_rotation(target_angle - bone.bone->get_bone_angle());
-
-        if (bone.root)
-            bone.bone->set_global_position(target * _root_scale);
     }
 }
 
