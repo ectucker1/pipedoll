@@ -7,6 +7,7 @@
 
 #include "pose_recording.h"
 #include "pose_rig.h"
+#include "anim_compressor.h"
 
 using namespace godot;
 
@@ -50,22 +51,45 @@ void PoseBaker::bake(
         pos_tracks.push_back(pos_track);
     }
 
+    // Add frames to compressor
+    AnimCompressor compressor;
     for (size_t i = 0; i < poseRecording->count_snapshots(); ++i)
     {
         real_t time = poseRecording->get_time(i);
         if (time < 0)
+        {
             continue;
+        }
         rig->apply_from(poseRecording, i);
         for (size_t j = 0; j < rot_tracks.size(); ++j)
         {
-            anim->track_insert_key(rot_tracks[j], time, rig->get_bones()[j].bone->get_rotation());
+            compressor.add_rot_sample(rot_tracks[j], time, rig->get_bones()[j].bone->get_rotation());
         }
         for (size_t j = 0; j < pos_tracks.size(); ++j)
         {
             if (rig->get_bones()[j].root)
             {
-                anim->track_insert_key(pos_tracks[j], time, rig->get_bones()[j].bone->get_position());
+                compressor.add_pos_sample(pos_tracks[j], time, rig->get_bones()[j].bone->get_position());
             }
+        }
+    }
+
+    // Run compression
+    compressor.compress(Math_TAU / 200, 1);
+
+    // Add values to actual animation player tracks
+    for (const auto& track : compressor.pos_tracks)
+    {
+        for (const auto& frame : track.value)
+        {
+            anim->track_insert_key(track.key, frame.time, frame.pos);
+        }
+    }
+    for (const auto& track : compressor.rot_tracks)
+    {
+        for (const auto& frame : track.value)
+        {
+            anim->track_insert_key(track.key, frame.time, frame.rot);
         }
     }
     anim->set_length(poseRecording->get_time(poseRecording->count_snapshots() - 1));

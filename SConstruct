@@ -34,6 +34,7 @@ if env["platform"] == "macos":
         source=sources,
     )
 else:
+    env["PDB"] = "project/addons/pipedoll/bin/libpipedoll{}{}.pdb".format(env["suffix"], env["SHLIBSUFFIX"]),
     library = env.SharedLibrary(
         "project/addons/pipedoll/bin/libpipedoll{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
