@@ -31,7 +31,7 @@ func _ready() -> void:
 	bake_button.pressed.connect(_bake_pressed)
 	
 func _bake_pressed() -> void:
-	var recording = load("res://" + input_line.text)
+	var recording = load(input_line.text)
 	if recording == null or not recording is PoseRecording:
 		print("Recording not valid")
 		return

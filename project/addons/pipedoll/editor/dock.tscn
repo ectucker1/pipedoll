@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq3p84pjjy0ga"]
+[gd_scene load_steps=7 format=3 uid="uid://dq3p84pjjy0ga"]
 
 [ext_resource type="Script" path="res://addons/pipedoll/editor/tab_panel.gd" id="1_5uv1j"]
 [ext_resource type="Script" path="res://addons/pipedoll/editor/recording_section.gd" id="1_xqsid"]
 [ext_resource type="Script" path="res://addons/pipedoll/editor/bake_section.gd" id="3_s4yyt"]
+[ext_resource type="Script" path="res://addons/pipedoll/editor/drag_nodepath.gd" id="4_m8hdb"]
+[ext_resource type="Script" path="res://addons/pipedoll/editor/drop_filepath.gd" id="4_p0ins"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvtye"]
 content_margin_left = 0.0
@@ -112,9 +114,10 @@ text = "Input Path"
 [node name="InputOption" type="LineEdit" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-text = "recording.res"
+text = "res://recording.res"
 caret_blink = true
 caret_blink_interval = 0.5
+script = ExtResource("4_p0ins")
 
 [node name="ScaleXLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
 layout_mode = 2
@@ -135,6 +138,7 @@ layout_mode = 2
 text = "Skeleton"
 caret_blink = true
 caret_blink_interval = 0.5
+script = ExtResource("4_m8hdb")
 
 [node name="ScaleYLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
 layout_mode = 2
@@ -155,6 +159,7 @@ layout_mode = 2
 text = "AnimationPlayer"
 caret_blink = true
 caret_blink_interval = 0.5
+script = ExtResource("4_m8hdb")
 
 [node name="RotCompTolLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
 layout_mode = 2
