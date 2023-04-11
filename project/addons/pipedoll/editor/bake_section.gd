@@ -20,6 +20,12 @@ var scale_x_spinbox: SpinBox = find_child("ScaleXOption")
 @onready
 var scale_y_spinbox: SpinBox = find_child("ScaleYOption")
 
+@onready
+var rot_tolerance_spinbox: SpinBox = find_child("RotCompTolOption")
+
+@onready
+var lin_tolerance_spinbox: SpinBox = find_child("LinCompTolOption")
+
 
 func _ready() -> void:
 	bake_button.pressed.connect(_bake_pressed)
@@ -43,13 +49,16 @@ func _bake_pressed() -> void:
 		print("Animation Player not found")
 		return
 	
+	var anim_library = anim.get_animation_library("Recordings")
 	var i = 1
 	var anim_name = "Recording " + str(i)
 	while i > 0:
 		anim_name = "Recording " + str(i)
 		i += 1
-		if not anim.has_animation(anim_name):
+		if anim_library == null or not anim_library.has_animation(anim_name):
 			i = 0
 	
-	PoseBaker.bake(recording, rig, anim, anim_name)
+	PoseBaker.bake(recording, rig, anim, anim_name,
+		rot_tolerance_spinbox.value,
+		lin_tolerance_spinbox.value)
 	

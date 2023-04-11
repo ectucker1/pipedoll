@@ -22,7 +22,9 @@ public:
         PoseRecording* poseRecording,
         PoseRig* rig,
         godot::AnimationPlayer* animPlayer,
-        godot::String name);
+        godot::String name,
+        double max_rot_error,
+        double max_pos_error);
 };
 
 #endif // POSE_RECORDING_H

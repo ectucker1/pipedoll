@@ -15,7 +15,9 @@ void PoseBaker::bake(
     PoseRecording* poseRecording,
     PoseRig* rig,
     AnimationPlayer* animPlayer,
-    String name)
+    String name,
+    double max_rot_error,
+    double max_pos_error)
 {
     Ref<AnimationLibrary> recordings;
     if (animPlayer->has_animation_library("Recordings"))
