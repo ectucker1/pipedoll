@@ -50,26 +50,12 @@ layout_mode = 2
 layout_mode = 2
 columns = 2
 
-[node name="CaptureLabel" type="Label" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordOptions"]
-layout_mode = 2
-text = "Capture"
-
-[node name="Capture2DOption" type="CheckBox" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordOptions"]
-layout_mode = 2
-text = "2D Position"
-
-[node name="Skip" type="Control" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordOptions"]
-layout_mode = 2
-
-[node name="Capture3DOption" type="CheckBox" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordOptions"]
-layout_mode = 2
-text = "3D Position"
-
 [node name="OutputLabel" type="Label" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordOptions"]
 layout_mode = 2
 text = "Output Path"
 
 [node name="OutputOption" type="LineEdit" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordOptions"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "recording.res"
 caret_blink = true
@@ -83,15 +69,15 @@ alignment = 1
 layout_mode = 2
 text = "Arm"
 
+[node name="Disarm" type="Button" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordControls"]
+layout_mode = 2
+disabled = true
+text = "Disarm"
+
 [node name="Start" type="Button" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordControls"]
 layout_mode = 2
 disabled = true
 text = "Start"
-
-[node name="Pause" type="Button" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordControls"]
-layout_mode = 2
-disabled = true
-text = "Pause"
 
 [node name="Stop" type="Button" parent="Sections/RecordSection/RecordPanel/RecordLayout/RecordControls"]
 layout_mode = 2
@@ -117,35 +103,16 @@ layout_mode = 2
 
 [node name="BakeOptions" type="GridContainer" parent="Sections/BakeSection/BakePanel/BakeLayout"]
 layout_mode = 2
-columns = 2
+columns = 4
 
 [node name="InputLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
 layout_mode = 2
 text = "Input Path"
 
 [node name="InputOption" type="LineEdit" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "recording.res"
-caret_blink = true
-caret_blink_interval = 0.5
-
-[node name="RigLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
-layout_mode = 2
-text = "Rig"
-
-[node name="RigOption" type="LineEdit" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
-layout_mode = 2
-text = "Skeleton"
-caret_blink = true
-caret_blink_interval = 0.5
-
-[node name="AnimPlayerLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
-layout_mode = 2
-text = "Anim Player"
-
-[node name="AnimPlayerOption" type="LineEdit" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
-layout_mode = 2
-text = "AnimationPlayer"
 caret_blink = true
 caret_blink_interval = 0.5
 
@@ -159,6 +126,16 @@ max_value = 5000.0
 step = 5.0
 value = 100.0
 
+[node name="RigLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+text = "Rig"
+
+[node name="RigOption" type="LineEdit" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+text = "Skeleton"
+caret_blink = true
+caret_blink_interval = 0.5
+
 [node name="ScaleYLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
 layout_mode = 2
 text = "Root Scale Y"
@@ -168,6 +145,42 @@ layout_mode = 2
 max_value = 5000.0
 step = 5.0
 value = 100.0
+
+[node name="AnimPlayerLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+text = "Anim Player"
+
+[node name="AnimPlayerOption" type="LineEdit" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+text = "AnimationPlayer"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="RotCompTolLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+text = "Angular Compression Threshold"
+
+[node name="RotCompTolOption" type="SpinBox" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+max_value = 6.0
+step = 0.1
+value = 1.0
+
+[node name="Pad1" type="Control" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+
+[node name="Pad2" type="Control" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+
+[node name="LinCompTolLabel" type="Label" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+text = "Linear Compression Threshold"
+
+[node name="LinCompTolOption" type="SpinBox" parent="Sections/BakeSection/BakePanel/BakeLayout/BakeOptions"]
+layout_mode = 2
+max_value = 6.0
+step = 0.1
+value = 1.0
 
 [node name="BakeControls" type="HBoxContainer" parent="Sections/BakeSection/BakePanel/BakeLayout"]
 layout_mode = 2

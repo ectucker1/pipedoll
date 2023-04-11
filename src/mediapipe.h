@@ -18,6 +18,8 @@ class MediaPipe : public RefCounted
 private:
     IGMOD* _igmod = nullptr;
 
+    std::atomic_bool _is_loaded;
+
     std::atomic_bool _is_present;
 
     std::atomic_bool _is_recording;
@@ -34,6 +36,7 @@ public:
     ~MediaPipe();
 
     void load();
+    void unload();
 
     void start_record();
     Ref<PoseRecording> finish_record();

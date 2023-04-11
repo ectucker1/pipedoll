@@ -183,7 +183,6 @@ metadata/TargetMetamark = "25,"
 [node name="RightCalf" type="Bone2D" parent="Skeleton/Chest/RightLeg"]
 position = Vector2(18.9706, 24.0232)
 rotation = 1.1615
-scale = Vector2(1, 1)
 rest = Transform2D(0.397962, 0.917402, -0.917402, 0.397962, 18.9706, 24.0232)
 metadata/StartMetamark = "25,"
 metadata/TargetMetamark = "27,"
@@ -192,7 +191,6 @@ metadata/TargetMetamark = "27,"
 visible = false
 position = Vector2(29.5029, 7.38793)
 rotation = -1.27102
-scale = Vector2(1, 1)
 rest = Transform2D(0.29531, -0.955401, 0.955401, 0.29531, 29.5029, 7.38793)
 
 [node name="LeftLeg" type="Bone2D" parent="Skeleton/Chest"]
@@ -213,7 +211,6 @@ metadata/TargetMetamark = "28,"
 visible = false
 position = Vector2(-35.1791, -4.28746)
 rotation = -1.54843
-scale = Vector2(1, 1)
 rest = Transform2D(0.0223631, -0.99975, 0.99975, 0.0223631, -35.1791, -4.28746)
 
 [node name="RightArm" type="Bone2D" parent="Skeleton/Chest"]
@@ -236,7 +233,6 @@ metadata/TargetMetamark = "16,"
 visible = false
 position = Vector2(-6.91308, -21.2653)
 rotation = -1.95436
-scale = Vector2(1, 1)
 rest = Transform2D(-0.374227, -0.927337, 0.927337, -0.374227, -6.91308, -21.2653)
 
 [node name="LeftArm" type="Bone2D" parent="Skeleton/Chest"]
@@ -250,7 +246,6 @@ metadata/TargetMetamark = "13,"
 [node name="LeftForearm" type="Bone2D" parent="Skeleton/Chest/LeftArm"]
 position = Vector2(18.9706, 24.0232)
 rotation = 0.142654
-scale = Vector2(1, 1)
 rest = Transform2D(0.989842, 0.142171, -0.142171, 0.989842, 18.9706, 24.0232)
 metadata/StartMetamark = "13,"
 metadata/TargetMetamark = "15,"
@@ -259,7 +254,6 @@ metadata/TargetMetamark = "15,"
 visible = false
 position = Vector2(22.2017, 10.684)
 rotation = 0.647231
-scale = Vector2(1, 1)
 rest = Transform2D(0.797757, 0.60298, -0.60298, 0.797757, 22.2017, 10.684)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
